@@ -7,7 +7,7 @@
 
 /* ===== BACKGROUND ===== */
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
   background: linear-gradient(135deg, #0a0a0a, #bfa34a, #5a2a80);
   color: white;
   min-height: 100vh;
@@ -40,9 +40,13 @@ body::before {
   justify-content: space-between;
 }
 
-#logo {
-  height: 50px;
-  object-fit: contain;
+.logo-text {
+  font-family: "Audiowide", cursive;
+  font-size: 32px;
+  color: #d4af37;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 
 .main-nav-links {
@@ -78,10 +82,10 @@ section {
   scroll-margin-top: 90px;
 }
 
-/* ===== HERO CAROUSEL (SAME WIDTH AS SERVICES) ===== */
+/* ===== HERO CAROUSEL ===== */
 .hero-slider {
   position: relative;
-  height: 56vh; /* 16:9 ratio */
+  height: 56vh;
   padding: 0;
   overflow: hidden;
   max-width: 1200px;
@@ -122,7 +126,7 @@ section {
   );
 }
 
-/* ===== HERO TEXT CONTAINER ===== */
+/* ===== HERO TEXT ===== */
 .hero-text-box {
   position: relative;
   z-index: 2;
@@ -170,7 +174,7 @@ section {
   padding: 0 1rem;
 }
 
-slider-controls button {
+.slider-controls button {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: white;
@@ -197,19 +201,21 @@ slider-controls button {
   cursor: pointer;
 }
 
-slider-dots .dot.active {
+.slider-dots .dot.active {
   background: #d4af37;
 }
 
-/* ===== INTRO SECTION ===== */
+/* ===== INTRO SECTION (ABOUT) ===== */
 .intro-section {
-  max-width: 1200px;
   margin: auto;
   padding: 3rem 1rem;
   text-align: center;
 }
 
 .intro-box {
+  max-width: 1200px;
+  margin: 0 auto;
+
   background: rgba(255, 255, 255, 0.12);
   border-radius: 18px;
   padding: 2.5rem 2rem;
@@ -220,6 +226,69 @@ slider-dots .dot.active {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #d4af37;
+  font-family: "Audiowide", cursive;
+}
+
+/* ===== ABOUT COLUMNS (NO CARDS) ===== */
+.about-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-column {
+  padding: 1rem 1.5rem;
+  border-left: 2px solid rgba(212, 175, 55, 0.25);
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.about-column:first-child {
+  border-left: none;
+}
+
+.about-column.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-column h3 {
+  font-size: 1.6rem;
+  color: #d4af37;
+  margin-bottom: 0.8rem;
+}
+
+.about-column p {
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  position: relative;
+  padding-bottom: 1.1rem;
+}
+
+/* Underline line under each paragraph */
+.about-column p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.35);
+}
+
+.about-subheading {
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
 }
 
 /* ===== WHY CHOOSE US ===== */
@@ -250,14 +319,16 @@ slider-dots .dot.active {
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
 }
 
-choose-card h4 {
+.choose-card h4 {
   margin: 0;
   font-size: 1.2rem;
   color: white;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
+  .about-columns {
+    grid-template-columns: 1fr;
+  }
   .choose-grid {
     grid-template-columns: 1fr;
   }
@@ -276,14 +347,10 @@ choose-card h4 {
   margin-bottom: 3rem;
   position: relative;
   color: #fff;
-
-  /* ✨ GLOW EFFECT */
   text-shadow:
     0 0 8px rgba(212, 175, 55, 0.8),
     0 0 18px rgba(212, 175, 55, 0.7),
     0 0 30px rgba(212, 175, 55, 0.6);
-
-  /* ✨ ANIMATION */
   animation: glowPulse 2.8s ease-in-out infinite;
 }
 
@@ -443,58 +510,7 @@ choose-card h4 {
   transition: transform 0.35s ease;
 }
 
-.about-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 4rem 1rem;
-  text-align: center;
-}
-
-.about-section h2 {
-  font-size: 2.3rem;
-  margin-bottom: 1.8rem;
-}
-
-.about-box {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 18px;
-  padding: 2.5rem 2rem;
-  text-align: left;
-  max-width: 850px;
-  margin: 2rem auto 0;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-}
-
-about-box p {
-  margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  opacity: 0.9;
-}
-
-#toggle-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  transition: background-color 0.3s;
-}
-
-#toggle-button:hover {
-  background-color: #45a049;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hidden {
-  display: none;
-}
-
+/* ===== DEVELOPMENT ===== */
 .development-section {
   max-width: 1200px;
   margin: auto;
@@ -537,6 +553,7 @@ about-box p {
   background: rgba(212, 175, 55, 0.25);
 }
 
+/* ===== CONTACT ===== */
 .contact-section {
   max-width: 700px;
   margin: auto;
@@ -544,7 +561,7 @@ about-box p {
   text-align: center;
 }
 
-contact-section h2 {
+.contact-section h2 {
   font-size: 2.3rem;
   margin-bottom: 2rem;
 }
@@ -567,7 +584,7 @@ contact-section h2 {
   color: white;
 }
 
-contact-form textarea {
+.contact-form textarea {
   min-height: 140px;
   resize: vertical;
 }
@@ -592,11 +609,12 @@ contact-form textarea {
     box-shadow 0.3s ease;
 }
 
-contact-form button:hover {
+.contact-form button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .main-nav-container {
     flex-direction: column;
@@ -643,4 +661,72 @@ footer {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ===== ABOUT GLOW EFFECT ===== */
+.intro-box h2.glow {
+  text-shadow:
+    0 0 18px rgba(212, 175, 55, 0.8),
+    0 0 28px rgba(212, 175, 55, 0.7);
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 18px;
+  padding: 2.2rem;
+  max-width: 520px;
+  width: 90%;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-box h2 {
+  color: #d4af37;
+  margin-bottom: 1rem;
+}
+
+.modal-box p {
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* CLOSE BUTTON */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
