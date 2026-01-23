@@ -41,12 +41,24 @@ body::before {
 }
 
 .logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-decoration: none; /* uklanja underline */
+  color: white !important; /* logo u bijelo */
+}
+
+.logo-serveu {
   font-family: "Audiowide", cursive;
   font-size: 32px;
-  color: #d4af37;
-  text-decoration: none;
-  letter-spacing: 1px;
   font-weight: 500;
+}
+
+.logo-24seven {
+  font-family: "Audiowide", cursive;
+  font-size: 16px;
+  margin-top: -1px; /* manji razmak */
+  letter-spacing: 1px;
 }
 
 .main-nav-links {
