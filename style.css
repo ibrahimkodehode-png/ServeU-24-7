@@ -336,6 +336,16 @@ section {
   margin-right: auto;
 }
 
+.about-column p .marker {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 55%,
+    rgba(212, 175, 55, 0.45) 55%,
+    rgba(212, 175, 55, 0.45) 90%,
+    transparent 90%
+  );
+}
+
 .choose-card h4 {
   margin: 0;
   font-size: 1.2rem;
