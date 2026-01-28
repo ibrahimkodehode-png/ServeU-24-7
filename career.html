@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers | ServeU 24Seven</title>
+
+    <!-- FONT -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="career.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="main-navbar">
+      <div class="main-nav-container">
+        <!-- LEFT LINKS (DESKTOP) -->
+        <ul class="nav-left">
+          <li><a href="index.html#programs">Services</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+
+        <!-- LOGO -->
+        <a href="index.html#top" class="logo-text">
+          <span class="logo-serveu">ServeU</span>
+          <span class="logo-247">24Seven</span>
+        </a>
+
+        <!-- RIGHT LINKS (DESKTOP) -->
+        <ul class="nav-right">
+          <li><a href="index.html#development">Development</a></li>
+          <li><a class="active" href="career.html">Career</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <!-- HAMBURGER -->
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- MOBILE MENU -->
+        <ul class="mobile-nav">
+          <li><a href="index.html#programs">Services</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#development">Development</a></li>
+          <li><a href="career.html">Career</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="career">
+      <!-- JOB INFO SECTION -->
+      <section class="job-info">
+        <h2>About ServeU</h2>
+        <p>
+          ServeU provides professional, remote guest support services for
+          property managers and short-term rental operators...
+        </p>
+
+        <h3>Responsibilities</h3>
+        <ul>
+          <li>
+            Handle guest communication across short-term rental platforms
+            (Airbnb, VRBO, etc.)
+          </li>
+          <li>
+            Respond to guest inquiries in a timely and professional manner
+          </li>
+          <li>Assist with check-ins, check-outs, and general guest support</li>
+          <li>Escalate issues according to SOPs when needed</li>
+          <li>Follow established workflows and communication guidelines</li>
+          <li>Maintain clear and accurate records of interactions</li>
+        </ul>
+
+        <h3>Requirements</h3>
+        <ul>
+          <li>
+            Previous experience in short-term rental support, property
+            management, or customer service
+          </li>
+          <li>Excellent written communication skills in English</li>
+          <li>Strong attention to detail and ability to follow procedures</li>
+          <li>Comfortable working remotely and managing time independently</li>
+          <li>
+            Reliable internet connection and availability for assigned shifts
+          </li>
+        </ul>
+
+        <h3>What We Offer</h3>
+        <ul>
+          <li>Fully remote work environment</li>
+          <li>Long-term collaboration opportunities</li>
+          <li>Clear workflows and ongoing support</li>
+          <li>Flexible scheduling based on coverage needs</li>
+          <li>Professional and respectful team culture</li>
+        </ul>
+      </section>
+
+      <!-- JOB CARDS -->
+      <h1>Join our team</h1>
+      <p class="subtitle">Work remotely. Grow globally.</p>
+
+      <div class="job-card">
+        <h3>Customer Support Agent</h3>
+        <p>Remote · Full-time</p>
+        <button class="apply-btn">Apply</button>
+      </div>
+
+      <div class="job-card">
+        <h3>Operations Coordinator</h3>
+        <p>Remote · Part-time</p>
+        <button class="apply-btn">Apply</button>
+      </div>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="applyModal">
+      <div class="modal-box">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h2>Apply for this job</h2>
+
+        <form class="apply-form" id="applyForm">
+          <input type="text" placeholder="Full Name" required />
+          <input type="tel" placeholder="Phone Number" required />
+          <input type="email" placeholder="Email Address" required />
+          <input type="file" accept=".pdf,.doc,.docx" required />
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <!-- SUCCESS MESSAGE (hidden by default) -->
+        <div class="success-message" id="successMessage">
+          <h3>Thank you for your application!</h3>
+          <p>
+            Your resume has been successfully submitted. Our team will review
+            your profile, and if your experience matches our current or upcoming
+            needs, we will contact you with next steps.
+          </p>
+          <p class="note">
+            Please note that only shortlisted candidates will be contacted.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 ServeU. All rights reserved.</p>
+    </footer>
+
+    <script src="career.js" defer></script>
+  </body>
+</html>

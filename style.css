@@ -38,9 +38,15 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
+/* LOGO CENTRIRAN NA STRANICI */
 .logo-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   font-family: "Audiowide", cursive;
   font-size: 32px;
   color: white;
@@ -56,8 +62,10 @@ body::before {
 .logo-247 {
   font-size: 16px;
   color: white;
-  align-self: flex-end;
   margin-top: -6px;
+
+  /* 👇 PRECIZNO POMJERANJE */
+  margin-left: 34px; /* pomjera ispod slova "U" */
 }
 
 .main-nav-links {
@@ -722,45 +730,37 @@ section {
 }
 
 .social-buttons h3 {
-  font-size: 1.2rem;
-  color: #d4af37;
-  margin-bottom: 0.8rem;
+  display: none;
 }
 
 .social-links {
   display: flex;
-  gap: 0.7rem;
+  gap: 14px;
   flex-wrap: wrap;
+  justify-content: flex-start; /* ⬅️ lijevo */
 }
 
 .social-btn {
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: #000;
-  background: #d4af37;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  display: inline-flex;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 0;
+  transition: transform 0.2s ease;
 }
 
-.social-btn i {
-  font-size: 1.1rem;
-}
-
-.social-btn span {
-  display: inline-block;
+.social-btn img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
 }
 
 .social-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+  transform: scale(1.12);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -883,4 +883,121 @@ footer {
   border: none;
   color: white;
   cursor: pointer;
+}
+
+/* ===== DESKTOP NAV ===== */
+.nav-left,
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-left a,
+.nav-right a,
+.mobile-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-left a::after,
+.nav-right a::after,
+.mobile-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #d4af37;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover::after,
+.nav-right a:hover::after,
+.mobile-nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== HAMBURGER ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1200;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #d4af37;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* ===== MOBILE MENU ===== */
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.96);
+  backdrop-filter: blur(8px);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.mobile-nav.active {
+  display: flex;
+}
+
+/* X ANIMATION */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+@media (max-width: 768px) {
+  .logo-text {
+    position: static;
+    transform: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .social-btn {
+    width: 80px;
+    height: 80px;
+  }
+
+  .social-btn img {
+    width: 56px;
+    height: 56px;
+  }
 }

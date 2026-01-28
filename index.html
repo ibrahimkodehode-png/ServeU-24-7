@@ -18,12 +18,6 @@
       rel="stylesheet"
     />
 
-    <!-- FONT AWESOME -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-
     <link rel="stylesheet" href="style.css" />
     <script src="javascripts.js" defer></script>
 
@@ -32,23 +26,40 @@
   </head>
 
   <body>
-    <!-- NAVBAR -->
     <nav class="main-navbar">
       <div class="main-nav-container">
-        <ul class="main-nav-links left">
+        <!-- LEFT LINKS (DESKTOP) -->
+        <ul class="nav-left">
           <li><a href="#programs">Services</a></li>
           <li><a href="#about">About</a></li>
         </ul>
 
-        <!-- TEXT LOGO -->
-        <a href="#top" class="logo-text" aria-label="ServeU 24Seven">
+        <!-- LOGO -->
+        <a href="#top" class="logo-text">
           <span class="logo-serveu">ServeU</span>
           <span class="logo-247">24Seven</span>
         </a>
 
-        <ul class="main-nav-links right">
+        <!-- RIGHT LINKS (DESKTOP) -->
+        <ul class="nav-right">
           <li><a href="#development">Development</a></li>
-          <li><a href="#career">Career</a></li>
+          <li><a href="career.html">Career</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- HAMBURGER -->
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- MOBILE MENU (JEDINI MENI) -->
+        <ul class="mobile-nav">
+          <li><a href="#programs">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#development">Development</a></li>
+          <li><a href="career.html">Career</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -79,13 +90,17 @@
         </div>
 
         <div class="slide lazy-slide" data-bg="images/hero3aa.webp">
-          <h1>We VALUE OUR CLIENTS</h1>
-          <p>Virtual assistance. Talk to us about any concerns, 24/7</p>
+          <div class="hero-text-box">
+            <h1>We VALUE OUR CLIENTS</h1>
+            <p>Virtual assistance. Talk to us about any concerns, 24/7</p>
+          </div>
         </div>
 
         <div class="slide lazy-slide" data-bg="images/hero4a.webp">
-          <h1>We USE TOP RATE SYSTEMS</h1>
-          <p>Easy peasy UI. Our interface is simple and easy to use.</p>
+          <div class="hero-text-box">
+            <h1>We USE TOP RATE SYSTEMS</h1>
+            <p>Easy peasy UI. Our interface is simple and easy to use.</p>
+          </div>
         </div>
       </div>
 
@@ -160,27 +175,27 @@
                 schedules, with core availability for team check-ins, training,
                 and client meetings when needed.
               </p>
-              <p><span class="marker"></span>
-                Clear Communication </span><br />
+              <p>
+                <span class="marker"> Clear Communication </span><br />
                 We maintain open lines of communication through tools like
                 Slack, Zoom, and project management platforms. Everyone is
                 expected to respond within working hours and communicate status
                 updates proactively.
               </p>
-              <p><span class="marker">
-                Performance & Accountability</span> <br />
+              <p>
+                <span class="marker"> Performance & Accountability</span> <br />
                 We set clear goals and KPIs for every role. Regular performance
                 check-ins, weekly team meetings, and transparent feedback help
                 keep everyone aligned and growing.
               </p>
-              <p><span class="marker">
-                Training & Growth </span><br />
+              <p>
+                <span class="marker"> Training & Growth </span><br />
                 Every team member receives role-specific training and access to
                 continuous learning resources. We support personal development
                 and reward initiative.
               </p>
-              <p> <span class="marker">
-                Workplace Conduct</span> <br />
+              <p>
+                <span class="marker"> Workplace Conduct</span> <br />
                 ServeU promotes a respectful, inclusive, and collaborative
                 environment. We do not tolerate harassment, discrimination, or
                 any behavior that undermines our culture of trust.
@@ -221,15 +236,17 @@
                 </p>
               </ul>
 
-              <p class="about-subheading"><span class="marker">
-                Remote-First Culture </span></p>
+              <p class="about-subheading">
+                <span class="marker"> Remote-First Culture </span>
+              </p>
               <p>
                 All team members work remotely using secure cloud tools,
                 ensuring collaboration across time zones.
               </p>
 
-              <p class="about-subheading"><span class="marker">
-                Flexible Work Hours </span></p>
+              <p class="about-subheading">
+                <span class="marker"> Flexible Work Hours </span>
+              </p>
               <p>
                 We value outcomes over hours, with flexible schedules and core
                 availability for meetings and training.
@@ -405,36 +422,41 @@
           </div>
 
           <div class="social-buttons">
-            <h3>Follow us</h3>
             <div class="social-links">
               <a
                 href="https://www.facebook.com/"
+                class="social-btn"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-btn fb"
               >
-                <i class="fab fa-facebook-f"></i>
-                <span>Facebook</span>
+                <img src="images/social-logos/facebook.png" alt="Facebook" />
               </a>
 
               <a
                 href="https://www.instagram.com/"
+                class="social-btn"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-btn ig"
               >
-                <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
+                <img src="images/social-logos/instagram.png" alt="Instagram" />
               </a>
 
               <a
                 href="https://www.linkedin.com/"
+                class="social-btn"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-btn li"
               >
-                <i class="fab fa-linkedin-in"></i>
-                <span>LinkedIn</span>
+                <img src="images/social-logos/linkedin.png" alt="LinkedIn" />
+              </a>
+
+              <a
+                href="https://wa.me/4746389037"
+                class="social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src="images/social-logos/whatsapp.png" alt="WhatsApp" />
               </a>
             </div>
           </div>
