@@ -113,18 +113,20 @@ if (slides.length && sliderInner) {
 }
 
 /* =========================================================
-   SMOOTH SCROLL (SAMO # LINKOVI)
+   SMOOTH SCROLL (ONLY # LINKS)
 ========================================================= */
 
-document.querySelectorAll('.main-nav-links a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const target = document.querySelector(link.getAttribute("href"));
-    if (!target) return;
+document
+  .querySelectorAll('.main-nav-container a[href^="#"]')
+  .forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
 
-    e.preventDefault();
-    target.scrollIntoView({ behavior: "smooth" });
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth" });
+    });
   });
-});
 
 /* =========================================================
    LAZY LOAD – PROGRAM CARDS
@@ -229,5 +231,51 @@ if (hamburger && mobileNav) {
       mobileNav.classList.remove("active");
       hamburger.setAttribute("aria-expanded", "false");
     });
+  });
+}
+
+/* =========================================================
+   CONTACT FORM + SUCCESS MODAL
+========================================================= */
+
+const contactForm = document.querySelector(".contact-form");
+const successModal = document.getElementById("successModal");
+const successClose = document.querySelector(".success-close");
+
+if (contactForm && successModal) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        successModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Network error. Please try again later.");
+    }
+  });
+
+  successClose?.addEventListener("click", () => {
+    successModal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+
+  successModal.addEventListener("click", (e) => {
+    if (e.target === successModal) {
+      successModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
   });
 }

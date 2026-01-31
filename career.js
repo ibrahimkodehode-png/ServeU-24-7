@@ -51,14 +51,28 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* SUBMIT FORME */
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // hide form
-  form.style.display = "none";
+  const formData = new FormData(form);
 
-  // show success message
-  successMessage.style.display = "block";
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    });
+
+    if (response.ok) {
+      form.reset();
+      form.style.display = "none";
+      successMessage.style.display = "block";
+    } else {
+      alert("Failed to send. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Try again later.");
+  }
 });
 
 /* ===== HAMBURGER MENU ===== */

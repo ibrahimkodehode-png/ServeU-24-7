@@ -140,11 +140,39 @@
         <button class="modal-close" aria-label="Close modal">&times;</button>
         <h2>Apply for this job</h2>
 
-        <form class="apply-form" id="applyForm">
-          <input type="text" placeholder="Full Name" required />
-          <input type="tel" placeholder="Phone Number" required />
-          <input type="email" placeholder="Email Address" required />
-          <input type="file" accept=".pdf,.doc,.docx" required />
+        <form
+          class="apply-form"
+          id="applyForm"
+          action="https://formspree.io/f/mwvbgqyv"
+          method="POST"
+        >
+          <input type="text" name="name" placeholder="Full Name" required />
+          <input type="tel" name="phone" placeholder="Phone Number" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            required
+          />
+
+          <!-- ✔️ Resume link instead of file upload -->
+          <input
+            type="text"
+            name="resume_link"
+            placeholder="Resume Link (Google Drive)"
+            required
+          />
+
+          <!-- Redirect after submit -->
+          <input type="hidden" name="_next" value="thank-you.html" />
+
+          <!-- Optional: Set email subject -->
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Job Application from ServeU 24Seven"
+          />
+
           <button type="submit" class="submit-btn">Submit</button>
         </form>
 
