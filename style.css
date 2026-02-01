@@ -62,6 +62,8 @@ body::before {
   color: white;
   margin-top: -6px;
   margin-left: 34px;
+  animation: logoColorShift 6s ease-in-out infinite;
+  animation-delay: 0.8s;
 }
 
 .nav-left,
@@ -293,6 +295,33 @@ section {
   font-size: 0.95rem;
 }
 
+/* ===== MARKER SPAN ===== */
+.marker {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #bfa34a;
+  padding: 2px 6px;
+  z-index: 1;
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: 2px;
+  width: calc(100% + 8px);
+  height: 45%;
+  background: linear-gradient(
+    135deg,
+    rgba(191, 163, 74, 0.35),
+    rgba(90, 42, 128, 0.35)
+  );
+  border-radius: 6px;
+  z-index: -1;
+}
+
 /* ===== WHY CHOOSE US ===== */
 .why-choose {
   margin-top: 2rem;
@@ -365,6 +394,25 @@ section {
       0 0 14px rgba(212, 175, 55, 0.9),
       0 0 24px rgba(212, 175, 55, 0.8),
       0 0 38px rgba(212, 175, 55, 0.7);
+  }
+}
+
+@keyframes logoColorShift {
+  0% {
+    color: #bfa34a;
+    text-shadow: 0 0 8px rgba(191, 163, 74, 0.6);
+  }
+  40% {
+    color: #5a2a80;
+    text-shadow: 0 0 10px rgba(90, 42, 128, 0.6);
+  }
+  70% {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    color: #bfa34a;
+    text-shadow: 0 0 8px rgba(191, 163, 74, 0.6);
   }
 }
 
@@ -542,9 +590,11 @@ section {
   opacity: 0.85;
 }
 
-.development-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  background: rgba(212, 175, 55, 0.25);
+@media (hover: hover) {
+  .development-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: rgba(212, 175, 55, 0.25);
+  }
 }
 
 .development-title {

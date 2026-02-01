@@ -63,9 +63,9 @@ body::before {
   font-size: 16px;
   color: white;
   margin-top: -6px;
-
-  /* 👇 PRECIZNO POMJERANJE */
-  margin-left: 34px; /* pomjera ispod slova "U" */
+  margin-left: 34px;
+  animation: logoColorShift 6s ease-in-out infinite;
+  animation-delay: 0.8s;
 }
 
 .main-nav-links {
@@ -97,6 +97,25 @@ body::before {
   width: 100%;
 }
 
+@keyframes logoColorShift {
+  0% {
+    color: #bfa34a;
+    text-shadow: 0 0 8px rgba(191, 163, 74, 0.6);
+  }
+  40% {
+    color: #5a2a80;
+    text-shadow: 0 0 10px rgba(90, 42, 128, 0.6);
+  }
+  70% {
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    color: #bfa34a;
+    text-shadow: 0 0 8px rgba(191, 163, 74, 0.6);
+  }
+}
+
 /* ===== ACTIVE LINK ===== */
 .main-nav-links a.active {
   color: #d4af37;
@@ -118,6 +137,87 @@ footer {
   max-width: 900px;
   margin: 3rem auto;
   text-align: center;
+}
+
+/* ===== CAREER PAGE HEADING ===== */
+.career-heading {
+  text-align: center;
+  margin: 4rem auto 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.career-title {
+  font-family: "Audiowide", cursive;
+  font-size: 3.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  text-shadow:
+    0 0 8px rgba(212, 175, 55, 0.6),
+    0 0 18px rgba(212, 175, 55, 0.5),
+    0 0 32px rgba(212, 175, 55, 0.4);
+  animation: careerGlow 3.2s ease-in-out infinite;
+}
+
+.career-title::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, #bfa34a, #5a2a80);
+  border-radius: 999px;
+}
+
+@keyframes careerGlow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 6px rgba(212, 175, 55, 0.45),
+      0 0 14px rgba(212, 175, 55, 0.35),
+      0 0 24px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    text-shadow:
+      0 0 14px rgba(212, 175, 55, 0.85),
+      0 0 26px rgba(212, 175, 55, 0.75),
+      0 0 40px rgba(212, 175, 55, 0.65);
+  }
+}
+
+.career-subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== MARKER (USED IN SUBTITLE) ===== */
+.marker {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  color: #bfa34a;
+  padding: 2px 6px;
+  z-index: 1;
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: 2px;
+  width: calc(100% + 8px);
+  height: 45%;
+  background: linear-gradient(
+    135deg,
+    rgba(191, 163, 74, 0.35),
+    rgba(90, 42, 128, 0.35)
+  );
+  border-radius: 6px;
+  z-index: -1;
 }
 
 .job-info {
@@ -145,17 +245,14 @@ footer {
   opacity: 0.9;
 }
 
-.subtitle {
-  margin-bottom: 3rem;
-  opacity: 0.85;
-}
-
 /* JOB CARDS */
 .job-card {
   margin-bottom: 2rem;
   padding: 2rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
+  position: relative;
+  overflow: hidden;
 
   opacity: 0;
   transform: translateY(20px);
@@ -164,15 +261,41 @@ footer {
     transform 0.8s ease;
 }
 
+.job-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #bfa34a, #5a2a80);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0; /* važno */
+  filter: blur(10px);
+  pointer-events: none; /* da hover i klikovi rade normalno */
+}
+
+.job-card > * {
+  position: relative;
+  z-index: 1; /* sadržaj iznad efekta */
+}
+
 .job-card.show {
   opacity: 1;
   transform: translateY(0);
 }
 
 .job-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  transform: translateY(-10px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(212, 175, 55, 0.35),
+    0 0 40px rgba(90, 42, 128, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  background: rgba(255, 255, 255, 0.14);
+  animation: cardPulse 1.4s ease-in-out infinite;
+}
+
+.job-card:hover::before {
+  opacity: 1;
 }
 
 .apply-btn {
@@ -412,15 +535,14 @@ footer {
   .hamburger {
     display: flex;
   }
-}
-@media (max-width: 768px) {
+
   .logo-text {
     position: static;
     transform: none;
   }
 }
 
-/* ===== MOBILE IMPROVEMENTS (NEW) ===== */
+/* ===== MOBILE IMPROVEMENTS ===== */
 @media (max-width: 600px) {
   .career {
     padding: 0 1rem;
@@ -439,5 +561,15 @@ footer {
   .apply-btn {
     width: 100%;
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .career-title {
+    font-size: 2.2rem;
+  }
+
+  .career-subtitle {
+    font-size: 0.95rem;
   }
 }
