@@ -739,19 +739,17 @@ section {
   margin-bottom: 0.7rem;
   font-size: 1rem;
   align-items: center;
-  flex-wrap: wrap; /* <-- FIX */
 }
 
 .info-label {
   font-weight: 600;
   color: rgba(212, 175, 55, 0.9);
-  min-width: 90px; /* <-- reduced width */
+  min-width: 110px;
 }
 
 .contact-details a {
   color: white;
   text-decoration: none;
-  word-break: break-word; /* <-- FIX */
 }
 
 .contact-details a:hover {
