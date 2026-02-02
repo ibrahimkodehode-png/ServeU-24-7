@@ -12,6 +12,7 @@ body {
   color: white;
   min-height: 100vh;
   line-height: 1.6;
+  overflow-x: hidden; /* <-- DODANO */
 }
 
 body::before {
@@ -657,6 +658,8 @@ section {
   font-family: inherit;
   background: rgba(255, 255, 255, 0.15);
   color: white;
+  width: 100%;
+  max-width: 100%;
 }
 
 .contact-form textarea {
