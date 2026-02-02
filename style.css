@@ -82,6 +82,12 @@ body::before {
   position: relative;
 }
 
+.nav-left a,
+.nav-right a,
+.mobile-nav a {
+  padding: 8px 6px;
+}
+
 .nav-left a::after,
 .nav-right a::after,
 .mobile-nav a::after {
@@ -451,15 +457,22 @@ section {
   pointer-events: none;
 }
 
-.program-card:hover {
-  transform: scale(1.04);
-  border-bottom: 4px solid rgba(212, 175, 55, 1);
-  box-shadow: 0 0 45px rgba(212, 175, 55, 0.95);
-}
+@media (hover: hover) {
+  .program-card:hover {
+    transform: scale(1.04);
+    border-bottom: 4px solid rgba(212, 175, 55, 1);
+    box-shadow: 0 0 45px rgba(212, 175, 55, 0.95);
+  }
 
-.program-card:hover::before {
-  opacity: 1;
-  animation: pulseGlow 1.1s ease-in-out infinite;
+  .program-card:hover::before {
+    opacity: 1;
+    animation: pulseGlow 1.1s ease-in-out infinite;
+  }
+
+  .program-card:hover .card-image {
+    transform: scale(1.05);
+    transition: transform 0.35s ease;
+  }
 }
 
 @keyframes pulseGlow {
@@ -730,6 +743,8 @@ section {
 }
 
 .contact-map-full iframe {
+  width: 100%;
+  height: 380px;
   border-radius: 14px;
   border: 1px solid rgba(212, 175, 55, 0.25);
 }
@@ -941,6 +956,71 @@ section {
   }
 }
 
+@media (max-width: 900px) {
+  .about-column p {
+    padding-bottom: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-map-full iframe {
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* scroll margin */
+  section {
+    scroll-margin-top: 60px;
+  }
+
+  /* hero slider */
+  .hero-slider {
+    height: 280px;
+    min-height: 260px;
+  }
+
+  .hero-text-box {
+    padding: 1.2rem;
+    max-width: 95%;
+    width: 100%;
+  }
+
+  .hero-text-box h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-text-box p {
+    font-size: 0.95rem;
+  }
+
+  /* contact form */
+  .contact-form button {
+    width: 100%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+
+  /* contact info */
+  .contact-info-container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-slider {
+    height: 250px;
+  }
+
+  .contact-form button {
+    padding: 0.8rem;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-left,
   .nav-right {
@@ -952,6 +1032,12 @@ section {
   .logo-text {
     position: static;
     transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    scroll-margin-top: 70px;
   }
 }
 
@@ -982,4 +1068,12 @@ footer {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
 }

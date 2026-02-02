@@ -92,20 +92,40 @@ if (slides.length && sliderInner) {
     startSlider();
   });
 
+  // ONLY run keyboard arrows when user is NOT typing
   document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") nextSlide();
-    if (e.key === "ArrowLeft") prevSlide();
+    const active = document.activeElement.tagName.toLowerCase();
+    if (active === "input" || active === "textarea") return;
+
+    if (e.key === "ArrowRight") {
+      stopSlider();
+      nextSlide();
+      startSlider();
+    }
+    if (e.key === "ArrowLeft") {
+      stopSlider();
+      prevSlide();
+      startSlider();
+    }
   });
 
   /* Swipe */
   let touchStartX = 0;
+  let touchEndX = 0;
+
   sliderInner.addEventListener("touchstart", (e) => {
     touchStartX = e.changedTouches[0].screenX;
   });
 
   sliderInner.addEventListener("touchend", (e) => {
-    const diff = e.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(diff) > 50) diff < 0 ? nextSlide() : prevSlide();
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchEndX - touchStartX;
+
+    if (Math.abs(diff) > 50) {
+      stopSlider();
+      diff < 0 ? nextSlide() : prevSlide();
+      startSlider();
+    }
   });
 
   updateSlider();
@@ -274,6 +294,13 @@ if (contactForm && successModal) {
 
   successModal.addEventListener("click", (e) => {
     if (e.target === successModal) {
+      successModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
       successModal.classList.remove("active");
       document.body.style.overflow = "";
     }
