@@ -665,7 +665,7 @@ section {
 
 .contact-form textarea {
   min-height: 140px;
-  resize: vertical; /* ONLY vertical resize */
+  resize: none;
   max-width: 100%;
   width: 100%;
   overflow: auto;
