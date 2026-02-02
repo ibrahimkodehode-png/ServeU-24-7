@@ -646,6 +646,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  width: 100%;
 }
 
 .contact-form input,
@@ -708,6 +709,21 @@ section {
   border-radius: 18px;
   padding: 2rem;
   border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* NEW: separate boxes */
+.contact-info-box,
+.contact-form-box {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 18px;
+  padding: 2rem;
+}
+
+.contact-form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-details h2 {
@@ -956,6 +972,11 @@ section {
   }
   .contact-info-container {
     grid-template-columns: 1fr;
+  }
+
+  .contact-info-box,
+  .contact-form-box {
+    padding: 1.5rem;
   }
 }
 
